@@ -1,0 +1,15 @@
+fastapi
+uvicorn[standard]
+torch
+torchvision
+scikit-learn
+pandas
+Pillow
+slowapi
+python-multipart
+kaggle
+pydantic-settings
+torchcam
+numpy
+matplotlib
+seaborn
