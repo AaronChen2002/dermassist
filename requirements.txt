@@ -1,16 +1,22 @@
+# Core Dependencies
 fastapi
-uvicorn[standard]
+uvicorn
+python-multipart
+pydantic-settings
+slowapi
+redis
+
+# ML Dependencies
 torch
 torchvision
-scikit-learn
-pandas
 Pillow
-slowapi
-python-multipart
-kaggle
-pydantic-settings
-torchcam
+
+# For Grad-CAM
+opencv-python
 numpy
-matplotlib
-seaborn
-redis
+torchcam
+
+# Testing
+pytest
+httpx
+ruff

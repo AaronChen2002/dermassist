@@ -5,7 +5,7 @@ import logging
 import torch
 from torchcam.methods import GradCAM
 from torchcam.utils import overlay_mask
-from torchvision.transforms.functional import to_pil_image, to_tensor
+from torchvision.transforms.functional import to_pil_image
 
 # --- Configuration ---
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')

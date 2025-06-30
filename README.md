@@ -21,9 +21,42 @@
 
 ---
 
+## Local Development
+
+### Setup
+
+1.  **Create Conda Environment**:
+    ```bash
+    conda create --name dermassist python=3.11 -y
+    ```
+
+2.  **Install Dependencies**:
+    All dependencies are listed in `requirements.txt`. Install them into the new environment:
+    ```bash
+    conda run -n dermassist pip install -r requirements.txt
+    ```
+
+### Running the Tests
+
+To verify the application is working correctly, run the test suite using `pytest`:
+
+```bash
+conda run -n dermassist pytest
+```
+
+### Running the Application
+
+To run the application locally (without Docker), you can use `uvicorn`:
+
+```bash
+conda run -n dermassist uvicorn backend.main:app --reload
+```
+
+---
+
 ## Development Status
 
-**Current Phase:** Phase 2: Production-Ready Features
+**Current Phase:** Phase 3: Foundational Testing
 
 **Last Completed Step:**
 - The backend application has been fully containerized using Docker (`Dockerfile`).
