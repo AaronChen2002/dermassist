@@ -13,3 +13,4 @@ torchcam
 numpy
 matplotlib
 seaborn
+redis

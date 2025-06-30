@@ -18,3 +18,26 @@
 * **API Key Auth**: Middleware to enforce per-request authorization.
 * **Rate Limiting**: 100 requests/day per key.
 * **Optional Demo Frontend**: React component for drag-and-drop image testing.
+
+---
+
+## Development Status
+
+**Current Phase:** Phase 2: Production-Ready Features
+
+**Last Completed Step:**
+- The backend application has been fully containerized using Docker (`Dockerfile`).
+- A `docker-compose.yml` file has been created to manage the application stack (backend + redis).
+- All code for this phase has been written.
+
+**Current Blocker:**
+- We are in the final verification step for Phase 2.
+- When running the application via `docker-compose`, the API is serving a stale, placeholder response instead of the latest code that uses the real ML model.
+- We suspect this is a Docker caching issue.
+
+**Immediate Next Step:**
+- The next action is to perform a clean rebuild of the Docker images to resolve the caching problem. The proposed command sequence is:
+  1. `docker-compose down`
+  2. `docker-compose build --no-cache`
+  3. `docker-compose up -d`
+  4. Retest the `/classify-lesion` endpoint.
