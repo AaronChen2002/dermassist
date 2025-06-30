@@ -2,7 +2,6 @@ from fastapi import FastAPI, UploadFile, File, HTTPException, Depends, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from slowapi import Limiter, _rate_limit_exceeded_handler
-from slowapi.util import get_remote_address
 from slowapi.errors import RateLimitExceeded
 from PIL import Image
 import io
@@ -11,8 +10,7 @@ import os
 import torch
 
 from .explainability import generate_request_id, generate_grad_cam_overlay
-from .security import get_api_key, API_KEY_NAME, get_api_key_for_rate_limiting
-from .config import settings
+from .security import get_api_key, get_api_key_for_rate_limiting
 from .ml_utils import get_model, preprocess_image
 
 # --- App Configuration ---
