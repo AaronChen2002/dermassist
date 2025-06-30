@@ -70,6 +70,12 @@ def read_root():
     return {"status": "DermAssist API is running."}
 
 
+@app.get("/health")
+def health_check():
+    """Health check endpoint for monitoring."""
+    return {"status": "ok"}
+
+
 @app.post("/classify-lesion")
 @limiter.limit("100/day")
 async def classify_lesion(
