@@ -28,6 +28,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Create models directory
+        run: mkdir -p models
+
+      - name: Download model from GDrive
+        run: curl -L -o models/dermassist_mobilenet_v2.pt 'https://drive.google.com/uc?export=download&id=1XTy-JO4U7Lf8UKb4YwVlNNe7ytTUJYwd'
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
