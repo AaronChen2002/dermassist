@@ -19,7 +19,9 @@ from .ml_utils import get_model, preprocess_image
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # --- Rate Limiting Setup ---
-limiter = Limiter(key_func=get_api_key_for_rate_limiting)
+# Read Redis URL from environment variable, with a fallback for local dev without Docker
+redis_url = os.environ.get("REDIS_URL", "redis://localhost:6379")
+limiter = Limiter(key_func=get_api_key_for_rate_limiting, storage_uri=redis_url)
 
 app = FastAPI(
     title="DermAssist API",
