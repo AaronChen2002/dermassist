@@ -19,3 +19,4 @@ torchcam
 # Testing
 pytest
 httpx
+ruff
