@@ -13,19 +13,15 @@ services:
     envVars:
       - key: REDIS_URL
         fromService:
-          type: private
+          type: keyvalue
           name: dermassist-redis
-          property: url
+          property: connectionString
       - key: API_KEYS
         # This will be set in the Render dashboard, not here
         value: ""
 
   # The Redis instance for rate limiting
-  - type: private
+  - type: keyvalue
     name: dermassist-redis
-    env: docker
-    image:
-      path: redis:alpine
     plan: free # Use the free instance type
-    ports:
-      - 6379:6379 
+    ipAllowList: [] # Allow only internal connections 
