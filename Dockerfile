@@ -28,7 +28,7 @@ RUN pip install --no-cache /wheels/*
 
 # Copy the application code and the trained model into the image
 COPY ./backend /app/backend
-COPY ./models /app/models
+RUN mkdir -p /app/models && curl -L -o /app/models/dermassist_mobilenet_v2.pt 'https://drive.google.com/uc?export=download&id=1XTy-JO4U7Lf8UKb4YwVlNNe7ytTUJYwd'
 
 # Expose the port the API will run on
 EXPOSE 8000
