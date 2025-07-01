@@ -2,13 +2,11 @@ services:
   # The FastAPI backend service
   - type: web
     name: dermassist-backend
-    env: docker
+    runtime: image
     # Replace with your Docker Hub username/organization
     image:
-      path: aaronchen2002/dermassist-api:latest
+      url: aaronchen2002/dermassist-api:latest
     plan: free # Use the free instance type
-    ports:
-      - 8000:8000
     healthCheckPath: /health
     envVars:
       - key: REDIS_URL
