@@ -2,10 +2,14 @@ services:
   # The FastAPI backend service
   - type: web
     name: dermassist-backend
-    runtime: image
-    # Replace with your Docker Hub username/organization
-    image:
-      url: aaronchen2002/dermassist-api:latest
+    runtime: docker
+    repo: https://github.com/AaronChen2002/dermassist
+    branch: main
+    autoDeploy: true
+    # A pre-deploy command to download the model file
+    preDeployCommand: |
+      mkdir -p models
+      curl -L 'https://docs.google.com/uc?export=download&id=1q-4aY_8...YOUR_FILE_ID...&confirm=t' -o models/dermassist_mobilenet_v2.pt
     plan: free # Use the free instance type
     healthCheckPath: /health
     envVars:
