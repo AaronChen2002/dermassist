@@ -26,9 +26,14 @@ COPY requirements.txt .
 # This is much faster and more reliable than downloading from PyPI again.
 RUN pip install --no-cache /wheels/*
 
-# Copy the application code and the trained model into the image
+# Install curl, create the models directory, and download the model
+RUN apt-get update && apt-get install -y curl \
+    && mkdir -p /app/models \
+    && curl -L -o /app/models/dermassist_mobilenet_v2.pt 'https://drive.google.com/uc?export=download&id=1XTy-JO4U7Lf8UKb4YwVlNNe7ytTUJYwd' \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy the application code into the image
 COPY ./backend /app/backend
-RUN mkdir -p /app/models && curl -L -o /app/models/dermassist_mobilenet_v2.pt 'https://drive.google.com/uc?export=download&id=1XTy-JO4U7Lf8UKb4YwVlNNe7ytTUJYwd'
 
 # Expose the port the API will run on
 EXPOSE 8000
