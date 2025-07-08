@@ -34,10 +34,14 @@ RUN apt-get update && apt-get install -y curl \
 
 # Copy the application code into the image
 COPY ./backend /app/backend
+COPY debug_settings.py /app/
+COPY start.sh /app/
+
+# Make the startup script executable
+RUN chmod +x /app/start.sh
 
 # Expose the port the API will run on
 EXPOSE 8000
 
-# Command to run the application using uvicorn
-# The --host 0.0.0.0 makes the server accessible from outside the container.
-CMD ["uvicorn", "backend.main:app", "--host", "0.0.0.0", "--port", "8000"]
+# Command to run the startup script
+CMD ["/app/start.sh"]

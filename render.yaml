@@ -14,9 +14,7 @@ services:
           type: keyvalue
           name: dermassist-redis
           property: connectionString
-      - key: API_KEYS
-        # This will be set in the Render dashboard, not here
-        value: ""
+
 
   # The Redis instance for rate limiting
   - type: keyvalue

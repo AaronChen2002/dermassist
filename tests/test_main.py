@@ -5,7 +5,10 @@ from backend.config import settings
 # client = TestClient(app) # This is no longer needed globally
 
 # Use the first key from the settings for testing
-VALID_API_KEY = list(settings.API_KEYS)[0] if settings.API_KEYS else "default-key-for-testing"
+try:
+    VALID_API_KEY = list(settings.API_KEYS)[0] if settings.API_KEYS else "default-key-for-testing"
+except Exception:
+    VALID_API_KEY = "default-key-for-testing"
 
 
 def test_health_check():
