@@ -35,6 +35,7 @@ RUN apt-get update && apt-get install -y curl \
 # Copy the application code into the image
 COPY ./backend /app/backend
 COPY debug_settings.py /app/
+COPY test_api_keys.py /app/
 COPY start.sh /app/
 
 # Make the startup script executable
