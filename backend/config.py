@@ -33,30 +33,22 @@ class Settings(BaseSettings):
     @classmethod
     def _parse_api_keys(cls, v):
         """Parse a comma-separated string of API keys into a set."""
-        print(f"DEBUG: _parse_api_keys called with: {repr(v)} (type: {type(v)})")
-        
         if v is None:
-            print("DEBUG: API_KEYS is None")
             raise ValueError("API_KEYS cannot be None. Please provide at least one API key.")
         
         if isinstance(v, str):
-            print(f"DEBUG: Processing string value: {repr(v)}")
             # Handle empty string case
             if not v.strip():
-                print("DEBUG: Empty string detected")
                 raise ValueError("API_KEYS cannot be empty. Please provide at least one API key.")
             
             # Split the string by commas, strip whitespace from each key,
             # and filter out any empty strings that might result from
             # trailing commas or multiple commas.
             keys = {key.strip() for key in v.split(",") if key.strip()}
-            print(f"DEBUG: Parsed keys: {keys}")
             if not keys:
-                print("DEBUG: No valid keys after parsing")
                 raise ValueError("API_KEYS must contain at least one valid API key.")
             return keys
         
-        print(f"DEBUG: Non-string value received: {repr(v)}")
         return v
 
 
@@ -72,8 +64,6 @@ def get_settings():
         except Exception as e:
             import sys
             print(f"CRITICAL ERROR: Failed to initialize settings: {e}")
-            print(f"Available environment variables: {list(os.environ.keys())}")
-            print(f"API_KEYS value: {repr(os.environ.get('API_KEYS', 'NOT_SET'))}")
             sys.exit(1)
     return _settings
 
